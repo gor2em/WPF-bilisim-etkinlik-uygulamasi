@@ -1,0 +1,107 @@
+﻿<Window x:Class="bilisimEtkinlik.ana"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Etkinlik Takip" Height="500" Width="800" AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="img/ana_bg.png"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="56*"/>
+            <RowDefinition Height="39*"/>
+            <RowDefinition Height="30*"/>
+        </Grid.RowDefinitions>
+        <DockPanel Width="70" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" >
+            <Button x:Name="btn_ky" Content="_" Width="35" Background="{x:Null}"  Style="{DynamicResource miniButonlar}" Foreground="#fff" />
+            <Button x:Name="btn_kapat" Content="X" Click="btn_kapat_Click" Width="35" Background="White" Style="{DynamicResource miniButonlar}" Foreground="#fff" />
+        </DockPanel>
+        <Label Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Montserrat" FontSize="20" Height="33" Width="10"/>
+        <Grid x:Name="rectangle_md" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="730" Background="#7F000000" MouseDown="rectangle_md_MouseDown" />
+        <Label Content="BİLİŞİM ETKİNLİK KAYIT" HorizontalAlignment="Center" Margin="308,147,308,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,-0.038" FontFamily="Montserrat" Foreground="White" Background="{x:Null}" Width="184" FontSize="14" Height="26" FontWeight="Bold"/>
+        <Label Content="" HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,-0.038" FontFamily="Montserrat" Foreground="#FF313131" FontSize="60" FontWeight="Bold" Height="128" Width="146">
+            <Label.Effect>
+                <BlurEffect Radius="3"/>
+            </Label.Effect>
+            <Label.Background>
+                <ImageBrush ImageSource="img/logo.png"/>
+            </Label.Background>
+        </Label>
+        <Grid HorizontalAlignment="Center" Height="150" Margin="0,163,0,67"  Width="800" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="231*"/>
+                <ColumnDefinition Width="169*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="anaadmin" Style="{StaticResource MyButton}" Content="" HorizontalAlignment="Center" Margin="358,51,20,15" VerticalAlignment="Center" Width="84" Height="84" FontFamily="Montserrat"  Cursor="Hand" Click="Anaadmin_Click">
+                <Button.Effect>
+                    <BlurEffect Radius="2"/>
+                </Button.Effect>
+                <Button.Foreground>
+                    <ImageBrush/>
+                </Button.Foreground>
+                <Button.Background>
+                    <ImageBrush ImageSource="img/anaorta.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="vip" Style="{StaticResource MyButton}" Content="" HorizontalAlignment="Center" Margin="26,51,228,15" VerticalAlignment="Center" Width="84" Height="84" Foreground="White" FontFamily="Montserrat"   Cursor="Hand" Click="Vip_Click" Grid.Column="1">
+                <Button.Effect>
+                    <BlurEffect Radius="2"/>
+                </Button.Effect>
+                <Button.Background>
+                    <ImageBrush ImageSource="img/anasag.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="uye" Style="{StaticResource MyButton}" Content="" HorizontalAlignment="Center" Margin="221,51,157,15" VerticalAlignment="Center" Width="84" Height="84" Foreground="White" FontFamily="Montserrat" FontWeight="Bold" FontSize="14" BorderBrush="{x:Null}" Cursor="Hand" OpacityMask="Black" Click="Uye_Click" >
+                <Button.Effect>
+                    <BlurEffect Radius="2"/>
+                </Button.Effect>
+                <Button.Background>
+                    <ImageBrush ImageSource="img/edit.png"/>
+                </Button.Background>
+            </Button>
+            <Button Style="{StaticResource MyButton}" Content="" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="116,-16,138,82"  Width="84" Height="84" Foreground="White" FontFamily="Montserrat" FontWeight="Bold" FontSize="14" BorderBrush="{x:Null}" Cursor="Hand" OpacityMask="Black" RenderTransformOrigin="3.32,-0.175" Visibility="Collapsed" Grid.Column="1" >
+                <Button.Background>
+                    <ImageBrush ImageSource="img/loupe.png"/>
+                </Button.Background>
+            </Button>
+            <Label Content="Üye Ol" HorizontalAlignment="Center" Margin="235,19,167,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,-0.038" FontFamily="Montserrat" Foreground="#FF1DD15D" Background="{x:Null}" FontSize="15" Height="27" Width="60">
+                <Label.Effect>
+                    <BlurEffect Radius="2"/>
+                </Label.Effect>
+            </Label>
+            <Label Content="Admin" HorizontalAlignment="Center" Margin="370,19,32,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,-0.038" FontFamily="Montserrat" Foreground="#FF1DD15D" Background="{x:Null}" FontSize="15" Height="27" Width="60">
+                <Label.Effect>
+                    <BlurEffect Radius="2"/>
+                </Label.Effect>
+            </Label>
+            <Label Content="VIP" HorizontalAlignment="Center" Margin="50,19,252,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,-0.038" FontFamily="Montserrat" Foreground="#FF1DD15D" Background="{x:Null}" FontSize="15" Width="36" Height="27" Grid.Column="1">
+                <Label.Effect>
+                    <BlurEffect Radius="2"/>
+                </Label.Effect>
+            </Label>
+        </Grid>
+        <Label Content="Ara" HorizontalAlignment="Center" Margin="707,168,293,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,-0.038" FontFamily="Montserrat" Foreground="#FFF1F1F1" Background="{x:Null}" FontSize="15" FontWeight="Bold" Visibility="Collapsed" Height="0" Width="0"/>
+        <Button x:Name="noUye" Style="{StaticResource MyButton}" Content="Kısayoldan devam et" HorizontalAlignment="Center" Margin="298,116,298,8" VerticalAlignment="Center" Width="204" Height="32" Foreground="#FF1DD15D" FontFamily="Montserrat" BorderBrush="{x:Null}" Cursor="Hand" RenderTransformOrigin="0.198,1.306" Click="NoUye_Click" Grid.Row="1" Background="#7F000000" >
+            <Button.Effect>
+                <BlurEffect Radius="2"/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="nou_gaetkinlik" Style="{StaticResource MyButton}" Content="" HorizontalAlignment="Center" Margin="318,20,426,44" VerticalAlignment="Center" Width="56" Height="56" Foreground="White" FontFamily="Montserrat" FontWeight="Bold" FontSize="14" BorderBrush="{x:Null}" Cursor="Hand" Click="Nou_gaetkinlik_Click" RenderTransformOrigin="0.514,0.676" Grid.Row="2" ClickMode="Press" >
+            <Button.Effect>
+                <BlurEffect Radius="2"/>
+            </Button.Effect>
+            <Button.Background>
+                <ImageBrush ImageSource="img/a_panel.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="nou_simulasyon" Style="{StaticResource MyButton}" Content="" HorizontalAlignment="Center" Margin="419,20,327,44" VerticalAlignment="Center" Width="55" Height="55" Foreground="White" FontFamily="Montserrat"  Cursor="Hand" Click="Nou_simulasyon_Click" Grid.Row="2">
+            <Button.Effect>
+                <BlurEffect Radius="2"/>
+            </Button.Effect>
+            <Button.Background>
+                <ImageBrush ImageSource="img/a_simulation.png"/>
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</Window>

@@ -1,0 +1,143 @@
+﻿<Window x:Class="bilisimEtkinlik.panel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Etkinlik Takip" Height="500" Width="1200" AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded">
+
+    <Grid AutomationProperties.IsRowHeader="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFEAEAEA" Offset="0"/>
+                <GradientStop Color="#FFF1F1F1" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <DockPanel Width="70" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="1" >
+            <Button x:Name="btn_ky" Content="_" Width="35" Background="White"  Style="{DynamicResource miniButonlar}" Foreground="#FF333333" />
+            <Button x:Name="btn_kapat" Content="X" Click="btn_kapat_Click" Width="35" Background="White" Style="{DynamicResource miniButonlar}" Foreground="#FF333333" />
+        </DockPanel>
+        <Label Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Montserrat" FontSize="20" Height="33" Width="10"/>
+        <Grid x:Name="rectangle_md" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="1130" Background="#7F000000" MouseDown="rectangle_md_MouseDown" Grid.ColumnSpan="2" />
+        <Grid HorizontalAlignment="Left" Height="475" Margin="0,25,0,0" VerticalAlignment="Top" Width="212" Grid.RowSpan="3" Background="#E5100E0E">
+            <Button x:Name="uyeler" Style="{StaticResource MyButton}" Content="Üyeler" HorizontalAlignment="Center" Margin="0,192,0,253" VerticalAlignment="Center" Width="212" Height="30" Foreground="#FFFAFAFA" FontFamily="Montserrat"  Cursor="Hand" FontSize="18" Background="#FF1F9E4C" Click="Uyeler_Click"/>
+            <Button x:Name="vipUyeler" Style="{StaticResource MyButton}" Content="VIP Üyeler" HorizontalAlignment="Center" Margin="0,242,0,203" VerticalAlignment="Center" Width="212" Height="30" Foreground="#FFFAFAFA" FontFamily="Montserrat"  Cursor="Hand" Background="#FF1F9E4C" FontSize="18" Click="VipUyeler_Click"/>
+            <Label x:Name="lbl_admin" Content="ADMIN PANEL" HorizontalAlignment="Center" Margin="48,133,48,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,-0.038" FontFamily="Montserrat" Foreground="#FFFAFAFA" Background="{x:Null}" Width="116" FontSize="14" Height="26" FontWeight="Bold"/>
+            <Button x:Name="kisayol" Style="{StaticResource MyButton}" Content="Tüm veritabanı" HorizontalAlignment="Center" Margin="0,294,0,151" VerticalAlignment="Center" Width="212" Height="30" Foreground="#FFFAFAFA" FontFamily="Montserrat"  Cursor="Hand" Background="#FF1F9E4C" FontSize="18" Click="Kisayol_Click"/>
+            <Button x:Name="logo" Style="{StaticResource sirketlerButon}" Content="" HorizontalAlignment="Center" Margin="0,-8,0,355" VerticalAlignment="Center" Width="146" Height="128" Foreground="{x:Null}" FontFamily="Montserrat" FontWeight="Bold" FontSize="14" BorderBrush="{x:Null}" Cursor="Hand" OpacityMask="Black" RenderTransformOrigin="0.667,1.143" Click="Logo_Click" >
+                <Button.Background>
+                    <ImageBrush ImageSource="img/logo.png"/>
+                </Button.Background>
+            </Button>
+        </Grid>
+        <Label Content="B  E  T  A  1.0 " HorizontalAlignment="Center" Margin="58,464,96,2" VerticalAlignment="Center"  RenderTransformOrigin="0.553,-0.038" FontFamily="The Font" Background="{x:Null}" Width="86" FontSize="14" Height="34" FontStyle="Italic">
+            <Label.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#7F787878" Offset="0"/>
+                    <GradientStop Color="#FFFFA31D" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Foreground>
+        </Label>
+        <Label Content="B  E  T  A  1.0 " HorizontalAlignment="Center" Margin="58,464,92,4" VerticalAlignment="Center"  RenderTransformOrigin="0.553,-0.038" FontFamily="The Font" Background="{x:Null}" Width="90" FontSize="14" Height="32" FontStyle="Italic">
+            <Label.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#7F787878" Offset="0"/>
+                    <GradientStop Color="#7F36E81A" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Foreground>
+        </Label>
+        <Grid x:Name="gr_uyeler" HorizontalAlignment="Left" Height="426" Margin="1,64,0,0" VerticalAlignment="Top" Width="386" Grid.RowSpan="3" Background="#CC000000" Grid.Column="1" IsEnabled="False" Visibility="Collapsed">
+            <Label Content="ÜYELER" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,-0.038" FontFamily="Montserrat" Foreground="#FF1F9E4C" Background="{x:Null}" Width="84" FontSize="18" Height="26" FontWeight="Bold"/>
+            <Button x:Name="uyeEkle" Style="{StaticResource MyButton}" Content="" HorizontalAlignment="Center" Margin="86,49,230,317" VerticalAlignment="Center" Width="70" Height="60" Foreground="White" FontFamily="Montserrat"  Cursor="Hand">
+                <Button.Background>
+                    <ImageBrush ImageSource="img/add.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="uyeGuncelle" Style="{StaticResource MyButton}" Content="" HorizontalAlignment="Center" Margin="156,49,160,317" VerticalAlignment="Center" Width="70" Height="60" Foreground="White" FontFamily="Montserrat"  Cursor="Hand" RenderTransformOrigin="4.35,1.167">
+                <Button.Background>
+                    <ImageBrush ImageSource="img/upd.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="uyeSil" Style="{StaticResource MyButton}" Content="" HorizontalAlignment="Center" Margin="226,49,90,317" VerticalAlignment="Center" Width="70" Height="60" Foreground="White" FontFamily="Montserrat"  Cursor="Hand" RenderTransformOrigin="4.736,2.067">
+                <Button.Background>
+                    <ImageBrush ImageSource="img/del.png"/>
+                </Button.Background>
+            </Button>
+            <Button Style="{StaticResource MyButton}" Content="Veritabanını Temizle" HorizontalAlignment="Center" Margin="86,114,90,276" VerticalAlignment="Center" Width="210" Height="36" Foreground="#FFFAFAFA" FontFamily="Montserrat"  Cursor="Hand" FontSize="16" Background="#7F1F9E4C"/>
+        </Grid>
+        <Grid x:Name="gr_vipUyeler" HorizontalAlignment="Left" Height="426" Margin="1,64,0,0" VerticalAlignment="Top" Width="386" Grid.RowSpan="3" Background="#FFDBA514" Grid.Column="1" Visibility="Collapsed">
+            <Label Content="VIP ÜYELER" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,-0.038" FontFamily="Montserrat" Foreground="#FF333333" Background="{x:Null}" Width="119" FontSize="18" Height="26" FontWeight="Bold"/>
+            <Button x:Name="v_UyeEkle" Style="{StaticResource MyButton}" Content="" HorizontalAlignment="Center" Margin="86,49,230,317" VerticalAlignment="Center" Width="70" Height="60" Foreground="White" FontFamily="Montserrat"  Cursor="Hand" Click="V_UyeEkle_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="img/add.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="v_UyeGuncelle" Style="{StaticResource MyButton}" Content="" HorizontalAlignment="Center" Margin="156,49,160,317" VerticalAlignment="Center" Width="70" Height="60" Foreground="White" FontFamily="Montserrat"  Cursor="Hand" RenderTransformOrigin="4.35,1.167" Click="V_UyeGuncelle_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="img/upd.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="v_UyeSil" Style="{StaticResource MyButton}" Content="" HorizontalAlignment="Center" Margin="226,49,90,317" VerticalAlignment="Center" Width="70" Height="60" Foreground="White" FontFamily="Montserrat"  Cursor="Hand" RenderTransformOrigin="4.736,2.067" Click="V_UyeSil_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="img/del.png"/>
+                </Button.Background>
+            </Button>
+            <Button Style="{StaticResource MyButton}" Content="Veritabanını Temizle" HorizontalAlignment="Center" Margin="86,380,90,10" VerticalAlignment="Center" Width="210" Height="36" Foreground="#FFFAFAFA" FontFamily="Montserrat"  Cursor="Hand" FontSize="16" Background="#7F000000"/>
+            <Grid x:Name="gr_uyeEkle" HorizontalAlignment="Left" Height="200" Margin="56,146,0,0" VerticalAlignment="Top" Width="264" Background="#FF3C3B3B" Visibility="Collapsed">
+                <Label Content="TC NO" HorizontalAlignment="Left" Margin="105,30,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,-0.038" FontFamily="Montserrat" Foreground="#FFE2E2E2" Background="{x:Null}"/>
+                <Button x:Name="v_HizliKayit" Style="{StaticResource MyButton}" Content="Hızlı Kayıt" HorizontalAlignment="Center" Margin="57,123,63,0" VerticalAlignment="Top" Width="144" Height="30" Background="#FF262525" Foreground="#FFFAFAFA" FontFamily="Montserrat" FontWeight="Bold" FontSize="14" BorderBrush="Black" Cursor="Hand" OpacityMask="Black" Click="V_HizliKayit_Click" />
+                <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="txt_tc" PreviewTextInput="NumberValidationTextBox"  MaxLength="11" MinHeight="11"  HorizontalAlignment="Left" Height="26" Margin="57,73,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="146" Background="{x:Null}" BorderBrush="#FFF1F1F1" FontFamily="Open Sans" Foreground="#FFF8FAFA"/>
+            </Grid>
+            <Grid x:Name="gr_UyeGuncelle" HorizontalAlignment="Left" Height="200" Margin="56,146,0,0" VerticalAlignment="Top" Width="264" Background="#FF3C3B3B" Visibility="Collapsed">
+                <Label Content="Güncellenecek ID" HorizontalAlignment="Left" Margin="76,12,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,-0.038" FontFamily="Montserrat" Foreground="#FFE2E2E2" Background="{x:Null}"/>
+                <Button x:Name="tc_guncelle" Style="{StaticResource MyButton}" Content="Güncelle" HorizontalAlignment="Center" Margin="57,160,63,0" VerticalAlignment="Top" Width="144" Height="30" Background="#FF262525" Foreground="#FFFAFAFA" FontFamily="Montserrat" FontWeight="Bold" FontSize="14" BorderBrush="Black" Cursor="Hand" OpacityMask="Black" Click="Tc_guncelle_Click" />
+                <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="txt_id"    MaxLength="11" MinHeight="11"  HorizontalAlignment="Left" Height="26" Margin="57,41,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="146" Background="{x:Null}" BorderBrush="#FFF1F1F1" FontFamily="Open Sans" Foreground="#FFF8FAFA"/>
+                <Label Content="YENİ TC NO" HorizontalAlignment="Left" Margin="89,82,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,-0.038" FontFamily="Montserrat" Foreground="#FFE2E2E2" Background="{x:Null}"/>
+                <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="txt_yenitc"    MaxLength="11" MinHeight="11"  HorizontalAlignment="Left" Height="26" Margin="57,111,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="146" Background="{x:Null}" BorderBrush="#FFF1F1F1" FontFamily="Open Sans" Foreground="#FFF8FAFA"/>
+            </Grid>
+            <Grid x:Name="gr_UyeSil" HorizontalAlignment="Left" Height="200" Margin="56,146,0,0" VerticalAlignment="Top" Width="264" Background="#FF3C3B3B" Visibility="Collapsed">
+                <Label Content="TC NO" HorizontalAlignment="Left" Margin="107,44,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,-0.038" FontFamily="Montserrat" Foreground="#FFE2E2E2" Background="{x:Null}"/>
+                <Button x:Name="tc_sil" Style="{StaticResource MyButton}" Content="Sil" HorizontalAlignment="Center" Margin="59,116,61,0" VerticalAlignment="Top" Width="144" Height="30" Background="#FF262525" Foreground="#FFFAFAFA" FontFamily="Montserrat" FontWeight="Bold" FontSize="14" BorderBrush="Black" Cursor="Hand" OpacityMask="Black" Click="Tc_sil_Click" />
+                <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="txt_tc_sil"    MaxLength="11" MinHeight="11"  HorizontalAlignment="Left" Height="26" Margin="59,73,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="146" Background="{x:Null}" BorderBrush="#FFF1F1F1" FontFamily="Open Sans" Foreground="#FFF8FAFA"/>
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="gr_microsoft" HorizontalAlignment="Left" Height="426" Margin="0,64,0,0" VerticalAlignment="Top" Width="386" Grid.RowSpan="3" Background="#FF00A4EF" Grid.Column="1" Visibility="Collapsed">
+            <Label Content="MICROSOFT" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.553,-0.038" FontFamily="Montserrat" Foreground="#FFCCCCCC" Background="{x:Null}" Width="242" FontSize="36" Height="52" FontWeight="Bold"/>
+        </Grid>
+        <TabControl x:Name="gr_kisayol" Grid.Column="1" HorizontalAlignment="Left" Height="460" Margin="10,30,0,0" VerticalAlignment="Top" Width="880" Grid.RowSpan="3">
+            <TabItem Header="Tabloları Görüntüle">
+                <Grid Background="#E5100E0E">
+                    <GroupBox Header="VIP" HorizontalAlignment="Left" Height="92" Margin="302,10,0,0" VerticalAlignment="Top" Width="545" Foreground="#FFD5DFE5" Background="#7F000000">
+                        <Grid HorizontalAlignment="Left" Height="89" Margin="0,-7,0,-12" VerticalAlignment="Top" Width="180">
+                            <Button x:Name="vipuye_goruntule" Style="{StaticResource MyButton}" Content="VIP Üyeleri Görüntüle" HorizontalAlignment="Center" Margin="8,29,-2,32" Width="174" Background="#FF1F9E4C" Foreground="White" FontFamily="Montserrat" FontWeight="Bold" FontSize="14" BorderBrush="{x:Null}" Cursor="Hand" Click="Vipuye_goruntule_Click" />
+                            <Button x:Name="salon_goruntule" Style="{StaticResource MyButton}" Content="Salon1" HorizontalAlignment="Center" Margin="193,29,-88,0" VerticalAlignment="Top" Width="75" Height="28" Background="#FF1F9E4C" Foreground="White" FontFamily="Montserrat" FontWeight="Bold" FontSize="14" BorderBrush="{x:Null}" Cursor="Hand" Click="Salon_goruntule_Click" />
+                            <Button x:Name="urun_goruntule" Style="{StaticResource MyButton}" Content="Ürünleri Görüntüle" HorizontalAlignment="Center" Margin="364,29,-344,0" VerticalAlignment="Top" Width="160" Height="28" Background="#FF1F9E4C" Foreground="White" FontFamily="Montserrat" FontWeight="Bold" FontSize="14" BorderBrush="{x:Null}" Cursor="Hand" Click="Urun_goruntule_Click" />
+                            <Button x:Name="salon_goruntule2" Style="{StaticResource MyButton}" Content="Salon2" HorizontalAlignment="Center" Margin="278,29,-174,0" VerticalAlignment="Top" Width="76" Height="28" Background="#FF1F9E4C" Foreground="White" FontFamily="Montserrat" FontWeight="Bold" FontSize="14" BorderBrush="{x:Null}" Cursor="Hand" Click="Salon_goruntule2_Click" />
+                        </Grid>
+                    </GroupBox>
+                    <Button x:Name="uye_goruntule" Style="{StaticResource MyButton}" Content="Üyeleri Görüntüle" HorizontalAlignment="Center" Margin="124,57,597,0" VerticalAlignment="Top" Width="153" Height="28" Background="#7F000000" Foreground="#FF1F9E4C" FontFamily="Montserrat" FontSize="14" BorderBrush="{x:Null}" Cursor="Hand" Click="Uye_goruntule_Click" FontWeight="Bold" />
+                    <DataGrid x:Name="my_grid" HeadersVisibility="Column" Foreground="#CC000000" HorizontalAlignment="Center" Height="287" Margin="0,123,0,0" VerticalAlignment="Top" Width="auto" Background="{x:Null}" AlternatingRowBackground="#FF1F9E4C" AutomationProperties.IsColumnHeader="True" AutomationProperties.IsRowHeader="True" BorderBrush="{x:Null}" RowBackground="#FFCCCCCC" Visibility="Collapsed"  />
+                    <TextBox x:Name="ara" HorizontalAlignment="Left" Height="24" Margin="28,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" Background="#7F000000" Foreground="White" BorderBrush="{x:Null}" TextChanged="Ara_TextChanged" IsEnabled="False"/>
+                    <Label Content="Ara" HorizontalAlignment="Center" Margin="44,35,796,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,-0.038" FontFamily="Montserrat" Foreground="#FF1F9E4C" Background="{x:Null}" Width="34" FontSize="14" Height="26"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Tabloları Sil">
+                <Grid Background="#FF333333">
+                    <GroupBox Header="VIP" HorizontalAlignment="Left" Height="92" Margin="212,10,0,0" VerticalAlignment="Top" Width="637" Foreground="#FFD5DFE5" Background="#7F000000">
+                        <Grid HorizontalAlignment="Left" Height="89" Margin="0,-7,0,-12" VerticalAlignment="Top" Width="180">
+                            <Button x:Name="vipuyesil" Style="{StaticResource MyButton}" Content="VIP Üyeleri Sil" HorizontalAlignment="Center" Margin="20,29,-14,32" Width="174" Background="#FFFB3026" Foreground="White" FontFamily="Montserrat" FontWeight="Bold" FontSize="14" BorderBrush="{x:Null}" Cursor="Hand" Click="Vipuyesil_Click" />
+                            <Button x:Name="salon_temizle" Style="{StaticResource MyButton}" Content="Salon1" HorizontalAlignment="Center" Margin="220,29,-138,0" VerticalAlignment="Top" Width="98" Height="28" Background="#FFFB3026" Foreground="White" FontFamily="Montserrat" FontWeight="Bold" FontSize="14" BorderBrush="{x:Null}" Cursor="Hand" Click="Salon_temizle_Click" />
+                            <Button x:Name="urun_sil" Style="{StaticResource MyButton}" Content="Ürünleri Sil" HorizontalAlignment="Center" Margin="446,29,-426,0" VerticalAlignment="Top" Width="160" Height="28" Background="#FFFB3026" Foreground="White" FontFamily="Montserrat" FontWeight="Bold" FontSize="14" BorderBrush="{x:Null}" Cursor="Hand" Click="Urun_sil_Click" />
+                            <Button x:Name="salon_temizle2" Style="{StaticResource MyButton}" Content="Salon2" HorizontalAlignment="Center" Margin="323,29,-241,0" VerticalAlignment="Top" Width="98" Height="28" Background="#FFFB3026" Foreground="White" FontFamily="Montserrat" FontWeight="Bold" FontSize="14" BorderBrush="{x:Null}" Cursor="Hand" Click="Salon_temizle2_Click" />
+                        </Grid>
+                    </GroupBox>
+                    <Button x:Name="uye_sil" Style="{StaticResource MyButton}" Content="Üyeleri Sil" HorizontalAlignment="Center" Margin="23,48,691,0" VerticalAlignment="Top" Width="160" Height="28" Background="#FFFB3026" Foreground="White" FontFamily="Montserrat" FontWeight="Bold" FontSize="14" BorderBrush="{x:Null}" Cursor="Hand" Click="Uye_sil_Click" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <DataGrid x:Name="grid_hk" HeadersVisibility="Column" Foreground="#CC000000" HorizontalAlignment="Center" Height="auto" Margin="498,117,230,0" VerticalAlignment="Top" Width="auto" Background="{x:Null}" AlternatingRowBackground="#FF1F9E4C" AutomationProperties.IsColumnHeader="True" AutomationProperties.IsRowHeader="True" BorderBrush="{x:Null}" RowBackground="#FFCCCCCC" Grid.Column="1" Visibility="Collapsed"  />
+
+    </Grid>
+</Window>
